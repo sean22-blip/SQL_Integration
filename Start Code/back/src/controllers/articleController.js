@@ -19,7 +19,8 @@ export async function getAllArticleById(req, res) {
     return res.status(404).json({Error: `id must be provided!`})
   }
   try{
-    const allArticles = await articleRepository.getArticlesByJournalistId();
+    const allArticles = await articleRepository.getArticlesByJournalistId(id);
+    res.status(200).json(allArticles);
   }catch(err){
     console.log("Error at getting all articles by name!", err);
     res.status(500).json({message: "Server erorr"})

@@ -3,7 +3,7 @@ import { getArticles,getAllArticleById, getArticleById, createArticle, updateArt
 
 const articleRouter = Router();
 articleRouter.get("/", getArticles);
-articleRouter.get("/:id", getAllArticleById);
+articleRouter.get("/journalists/:id/articles", getAllArticleById);
 articleRouter.get("/:id", getArticleById);
 articleRouter.post("/", createArticle);
 articleRouter.put("/:id", updateArticle);
