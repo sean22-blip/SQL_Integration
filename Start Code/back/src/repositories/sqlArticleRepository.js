@@ -94,7 +94,7 @@ export async function createArticle(article) {
     // TODO
     try {
         const { title, content, journalist, category } = article;
-        const [rows] = await pool.query(`Insert into articles(title, content, journalist, category) values (?, ?, ?,?)`, [title, content, joutnalist, category]);
+        const [rows] = await pool.query(`Insert into articles(title, content, journalist, category) values (?, ?, ?,?)`, [title, content, journalist, category]);
 
         return getArticleById(rows.insertId)
 
@@ -146,7 +146,7 @@ export async function deleteArticle(id) {
             console.log(`No article found with id: ${delId}`);
             return null;
         }
-        return getAllArticles();
+        return getArticles();
     } catch (error) {
         console.log({ error: error.message });
         throw error;

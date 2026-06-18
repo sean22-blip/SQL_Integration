@@ -13,7 +13,7 @@ export async function getArticles(req, res) {
 
 }
 export async function getAllArticleById(req, res) {
-  const {id} = req.params.id;
+  const id = req.params.id;
   if(!id){
     // console.log(``)
     return res.status(404).json({Error: `id must be provided!`})

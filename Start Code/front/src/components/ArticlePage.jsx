@@ -18,7 +18,7 @@ export default function ArticlePage() {
     try {
       setLoading(true);
 
-      const found = getArticleById(id);
+      const found =  await getArticleById(id);
       if (found) {
         setArticle(found);
         setError("");
