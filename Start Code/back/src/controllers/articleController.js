@@ -2,13 +2,27 @@ import * as articleRepository from "../repositories/sqlArticleRepository.js";
 // TODO : Change articleRepository to use the sqlArticleRepository
 
 // GET /api/articles
-export async function getAllArticles(req, res) {
+export async function getArticles(req, res) {
   try {
-    const articles = await articleRepository.getAllArticles();
+    const articles = await articleRepository.getArticles();
     res.json(articles);
   } catch (error) {
     console.error("Error fetching articles:", error);
     res.status(500).json({ message: "Server error" });
+  }
+
+}
+export async function getAllArticleById(req, res) {
+  const {id} = req.params.id;
+  if(!id){
+    // console.log(``)
+    return res.status(404).json({Error: `id must be provided!`})
+  }
+  try{
+    const allArticles = await articleRepository.getArticlesByJournalistId();
+  }catch(err){
+    console.log("Error at getting all articles by name!", err);
+    res.status(500).json({message: "Server erorr"})
   }
 }
 
